@@ -14,6 +14,7 @@ OBJS = \
 	mp.o\
 	picirq.o\
 	pipe.o\
+	printfmt.o\
 	proc.o\
 	sleeplock.o\
 	spinlock.o\

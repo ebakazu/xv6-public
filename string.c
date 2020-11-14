@@ -103,3 +103,12 @@ strlen(const char *s)
   return n;
 }
 
+int
+strnlen(const char *s, uint32_t size)
+{
+	int n;
+
+	for (n = 0; size > 0 && *s != '\0'; s++, size--)
+		n++;
+	return n;
+}

@@ -18,7 +18,7 @@ void            bwrite(struct buf*);
 
 // console.c
 void            consoleinit(void);
-void            cprintf(char*, ...);
+int	            cprintf(const char *fmt, ...);
 void            consoleintr(int(*)(void));
 void            panic(char*) __attribute__((noreturn));
 
@@ -147,6 +147,7 @@ char*           safestrcpy(char*, const char*, int);
 int             strlen(const char*);
 int             strncmp(const char*, const char*, uint);
 char*           strncpy(char*, const char*, int);
+int	            strnlen(const char *s, uint32_t size);
 
 // syscall.c
 int             argint(int, int*);
@@ -185,6 +186,9 @@ void            switchuvm(struct proc*);
 void            switchkvm(void);
 int             copyout(pde_t*, uint, void*, uint);
 void            clearpteu(pde_t *pgdir, char *uva);
+
+// printfmt.c
+void vprintfmt(void (*putch)(int, void*), void *putdat, const char *fmt, va_list ap);
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
