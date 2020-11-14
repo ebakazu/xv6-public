@@ -190,5 +190,15 @@ void            clearpteu(pde_t *pgdir, char *uva);
 // printfmt.c
 void vprintfmt(void (*putch)(int, void*), void *putdat, const char *fmt, va_list ap);
 
+struct pci_func;
+
+// pci.c
+int  pciinit(void);
+void pci_func_enable(struct pci_func *f);
+
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
+
+// assert
+#define assert(x)		\
+	do { if (!(x)) panic(#x); } while (0)
